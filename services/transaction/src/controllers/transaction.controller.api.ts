@@ -1,5 +1,3 @@
-import {transactionDefinition} from '../models';
-
 export const def = {
   openapi: '3.0.0',
   info: {
@@ -45,7 +43,7 @@ export const def = {
   },
   components: {
     schemas: {
-      Transaction: transactionDefinition,
+      $ref: '#/components/schemas/Transaction',
     },
   },
 };

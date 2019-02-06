@@ -1,4 +1,5 @@
-import {customerDefinition} from '../models';
+import {Customer} from '../models';
+import {getJsonSchema} from '@loopback/repository-json-schema';
 
 export const def = {
   openapi: '3.0.0',
@@ -78,7 +79,7 @@ export const def = {
   },
   components: {
     schemas: {
-      Customer: customerDefinition,
+      Customer: getJsonSchema(Customer),
     },
   },
 };

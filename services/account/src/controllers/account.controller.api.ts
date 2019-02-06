@@ -1,4 +1,5 @@
-import {accountDefinition} from '../models';
+import {Account} from '../models';
+import {getJsonSchema} from '@loopback/repository-json-schema';
 
 export const def = {
   openapi: '3.0.0',
@@ -183,7 +184,7 @@ export const def = {
   },
   components: {
     schemas: {
-      Account: accountDefinition,
+      Account: getJsonSchema(Account),
       Balance: {
         type: 'object',
         required: ['balance'],

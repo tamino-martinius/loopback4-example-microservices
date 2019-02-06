@@ -1,13 +1,7 @@
 import {ApplicationConfig} from '@loopback/core';
 import {RestApplication} from '@loopback/rest';
 /* tslint:disable:no-unused-variable */
-import {
-  DataSourceConstructor,
-  juggler,
-  RepositoryMixin,
-  Class,
-  Repository,
-} from '@loopback/repository';
+import {RepositoryMixin} from '@loopback/repository';
 /* tslint:disable:no-unused-variable */
 import {BootMixin, Booter, Binding} from '@loopback/boot';
 import {dataSource} from './datasources';
