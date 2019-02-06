@@ -1,2 +1,1 @@
-export * from './transaction.model';
-export * from './transaction.definition';
+export * from './todo-list.model';
