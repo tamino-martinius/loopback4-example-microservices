@@ -1,54 +1,71 @@
 {
-  "name": "transaction",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "The Transaction microservice.",
-  "main": "index.ts",
+  "description": "The Todo List microservice.",
+  "main": "index.js",
   "engines": {
     "node": ">=8"
   },
   "dependencies": {
     "@loopback/boot": "^1.0.11",
+    "@loopback/context": "^1.5.0",
     "@loopback/core": "^1.1.5",
+    "@loopback/openapi-v3": "^1.2.0",
+    "@loopback/openapi-v3-types": "^1.0.5",
     "@loopback/repository": "^1.1.4",
     "@loopback/rest": "^1.5.4",
-    "@types/cors": "^2.8.4",
-    "loopback-datasource-juggler": "^4.5.3"
+    "@loopback/rest-explorer": "^1.1.7",
+    "@loopback/service-proxy": "^1.0.7",
+    "loopback-connector-rest": "^3.4.1"
   },
   "devDependencies": {
     "@loopback/build": "^1.2.1",
-    "@loopback/testlab": "^1.0.5"
+    "@loopback/http-caching-proxy": "^1.0.5",
+    "@loopback/testlab": "^1.0.5",
+    "@loopback/tslint-config": "^2.0.0",
+    "@types/lodash": "^4.14.120",
+    "@types/node": "^10.12.21",
+    "lodash": "^4.17.11",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1"
   },
   "scripts": {
-    "build": "lb-tsc && ./bin/generate-example-file-db",
-    "build:watch": "lb-tsc --watch",
-    "clean": "lb-clean",
+    "build:apidocs": "lb-apidocs",
+    "build": "lb-tsc es2017 --outDir dist",
+    "build:watch": "lb-tsc es2017 --outDir dist --watch",
+    "clean": "lb-clean *example-todo-list*.tgz dist package api-docs",
     "lint": "npm run prettier:check && npm run tslint",
-    "lint:fix": "npm run prettier:fix && npm run tslint:fix",
-    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "lint:fix": "npm run tslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\"",
     "prettier:check": "npm run prettier:cli -- -l",
     "prettier:fix": "npm run prettier:cli -- --write",
     "tslint": "lb-tslint",
     "tslint:fix": "npm run tslint -- --fix",
-    "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha \"dist/test/unit/**/*.js\"",
-    "posttest": "npm run lint",
-    "start": "npm run build && node ./dist/index.js",
-    "prepublishOnly": "npm run test"
+    "pretest": "npm run build",
+    "test": "lb-mocha \"dist/test/*/**/*.js\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/test/**/*.js && npm run posttest",
+    "verify": "npm pack && tar xf loopback-todo-list*.tgz && tree package && npm run clean",
+    "migrate": "node ./dist/src/migrate",
+    "prestart": "npm run build",
+    "start": "node ."
   },
   "keywords": [
+    "loopback4",
     "loopback-next",
     "example",
-    "transaction",
+    "todo",
     "microservice"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tamino-martinius/loopback4-example-microservices.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/tamino-martinius/loopback4-example-microservices/issues"
   },
   "homepage": "https://github.com/tamino-martinius/loopback4-example-microservices#readme",
-  "author": "IBM",
   "license": "MIT"
 }
