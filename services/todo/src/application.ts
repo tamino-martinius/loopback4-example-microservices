@@ -9,7 +9,7 @@ export class TodoMicroservice extends BootMixin(
   RepositoryMixin(RestApplication),
 ) {
   constructor(options: ApplicationConfig = {}) {
-    super({options});
+    super(options);
 
     // Set up the custom sequence
     this.sequence(MySequence);
