@@ -1,44 +1,30 @@
+import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
+import {RestExplorerComponent} from '@loopback/rest-explorer';
+import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
-/* tslint:disable:no-unused-variable */
-import {
-  DataSourceConstructor,
-  juggler,
-  RepositoryMixin,
-  Class,
-  Repository,
-} from '@loopback/repository';
-/* tslint:disable:no-unused-variable */
-import {BootMixin, Booter, Binding} from '@loopback/boot';
-import {dataSource} from './datasources/memory.datasource';
+import {MySequence} from './sequence';
 
-export class AccountMicroservice extends BootMixin(
+export class TodoMicroservice extends BootMixin(
   RepositoryMixin(RestApplication),
 ) {
-  public _startTime: Date;
+  constructor(options: ApplicationConfig = {}) {
+    super({options});
 
-  constructor(options?: ApplicationConfig) {
-    options = Object.assign(
-      {},
-      {
-        rest: {
-          port: 3001,
-        },
-      },
-      options,
-    );
+    // Set up the custom sequence
+    this.sequence(MySequence);
 
-    super(options);
+    this.component(RestExplorerComponent);
+
     this.projectRoot = __dirname;
-    this.setupDataSources();
-  }
-
-  async start() {
-    this._startTime = new Date();
-    return super.start();
-  }
-
-  setupDataSources() {
-    this.bind('dataSources.memory').to(dataSource);
+    // Customize @loopback/boot Booter Conventions here
+    this.bootOptions = {
+      controllers: {
+        // Customize ControllerBooter Conventions here
+        dirs: ['controllers'],
+        extensions: ['.controller.js'],
+        nested: true,
+      },
+    };
   }
 }
