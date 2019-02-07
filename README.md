@@ -1,3 +1,13 @@
+# WIP
+
+[x] Customer -> Todo
+[x] Account -> Todo-List
+[x] Remove unused services
+[ ] Update Facade
+[ ] Use belongsTo and hasMany relations
+[x] Update wrapper package
+
+
 # loopback4-example-microservices
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/strongloop/loopback)
@@ -17,7 +27,7 @@ Make sure you have the following installed:
 
 ```shell
 # install loopback4-example-microservices
-git clone https://github.com/strongloop/loopback4-example-microservices
+git clone https://github.com/tamino-martinius/loopback4-example-microservices
 cd loopback4-example-microservices
 npm i
 ```
@@ -45,7 +55,7 @@ directory.
 
 ### Project Architects
 
-|                   Raymond Feng                  |            Miroslav Bajtos            |           Ritchie Martori           |
+|                  Raymond Feng                   |            Miroslav Bajtos            |           Ritchie Martori           |
 | :---------------------------------------------: | :-----------------------------------: | :---------------------------------: |
 | [![raymondfeng]](http://github.com/raymondfeng) | [![bajtos]](http://github.com/bajtos) | [![ritch]](http://github.com/ritch) |
 
@@ -53,10 +63,10 @@ directory.
 
 |                                           |                                             |                                                                                                              |                                       |
 | :---------------------------------------: | :-----------------------------------------: | :----------------------------------------------------------------------------------------------------------: | :-----------------------------------: |
-|               Taranveer Virk              |                Biniam Admikew               |                                                   Kyu Shim                                                   |               Diana Lau               |
+|              Taranveer Virk               |               Biniam Admikew                |                                                   Kyu Shim                                                   |               Diana Lau               |
 |  [![virkt25]](http://github.com/virkt25)  |  [![b-admike]](http://github.com/b-admike)  | [<img src="https://avatars3.githubusercontent.com/u/18518689?v=3&s=60" height=60>](http://github.com/shimks) | [![dhmlau]](http://github.com/dhmlau) |
-|                 Janny Hou                 |                   Simon Ho                  |       Yappa Hage                                                                                                      |                                       |
-| [![jannyhou]](http://github.com/jannyHou) | [![superkhau]](http://github.com/superkhau) | [![hacksparrow]](https://github.com/hacksparrow)                                                                                                             |                                       |
+|                 Janny Hou                 |                  Simon Ho                   |                                                  Yappa Hage                                                  |                                       |
+| [![jannyhou]](http://github.com/jannyHou) | [![superkhau]](http://github.com/superkhau) |                               [![hacksparrow]](https://github.com/hacksparrow)                               |                                       |
 
 [See all contributors](https://github.com/strongloop/loopback4-example-microservices/graphs/contributors)
 
