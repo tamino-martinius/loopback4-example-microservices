@@ -1,11 +1,11 @@
 # WIP
 
-[x] Customer -> Todo
-[x] Account -> Todo-List
-[x] Remove unused services
-[ ] Update Facade
-[ ] Use belongsTo and hasMany relations
-[x] Update wrapper package
+* [x] Customer -> Todo
+* [x] Account -> Todo-List
+* [x] Remove unused services
+* [ ] Update Facade
+* [ ] Use belongsTo and hasMany relations
+* [x] Update wrapper package
 
 
 # loopback4-example-microservices
