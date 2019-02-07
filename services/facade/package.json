@@ -44,12 +44,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strongloop/loopback4-example-microservices.git"
+    "url": "git+https://github.com/tamino-martinius/loopback4-example-microservices.git"
   },
   "bugs": {
-    "url": "https://github.com/strongloop/loopback4-example-microservices/issues"
+    "url": "https://github.com/tamino-martinius/loopback4-example-microservices/issues"
   },
-  "homepage": "https://github.com/strongloop/loopback4-example-microservices#readme",
+  "homepage": "https://github.com/tamino-martinius/loopback4-example-microservices#readme",
   "author": "IBM",
   "license": "MIT"
 }
