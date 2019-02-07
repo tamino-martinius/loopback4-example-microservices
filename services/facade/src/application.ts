@@ -1,38 +1,30 @@
+import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
+import {RestExplorerComponent} from '@loopback/rest-explorer';
+import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
-/* tslint:disable:no-unused-variable */
-import {
-  DataSourceConstructor,
-  juggler,
-  RepositoryMixin,
-  Class,
-  Repository,
-} from '@loopback/repository';
-/* tslint:disable:no-unused-variable */
-import {BootMixin, Booter, Binding} from '@loopback/boot';
+import {MySequence} from './sequence';
 
 export class FacadeMicroservice extends BootMixin(
   RepositoryMixin(RestApplication),
 ) {
-  public _startTime: Date;
-
-  constructor(options?: ApplicationConfig) {
-    options = Object.assign(
-      {},
-      {
-        rest: {
-          port: 3101,
-        },
-      },
-      options,
-    );
-
+  constructor(options: ApplicationConfig = {}) {
     super(options);
-    this.projectRoot = __dirname;
-  }
 
-  async start() {
-    this._startTime = new Date();
-    return super.start();
+    // Set up the custom sequence
+    this.sequence(MySequence);
+
+    this.component(RestExplorerComponent);
+
+    this.projectRoot = __dirname;
+    // Customize @loopback/boot Booter Conventions here
+    this.bootOptions = {
+      controllers: {
+        // Customize ControllerBooter Conventions here
+        dirs: ['controllers'],
+        extensions: ['.controller.js'],
+        nested: true,
+      },
+    };
   }
 }

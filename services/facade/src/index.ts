@@ -1,25 +1,14 @@
 import {FacadeMicroservice} from './application';
-import {RestServer, RestBindings} from '@loopback/rest';
-import 'loopback-connector-swagger';
+import {ApplicationConfig} from '@loopback/core';
 
-export async function main() {
-  const app = new FacadeMicroservice();
-  try {
-    await app.boot();
-    await app.start();
-    console.log('Application Info:', await info());
-  } catch (err) {
-    console.error(`Cannot start the app ${err}`);
-    process.exit(1);
-  }
+export {FacadeMicroservice};
 
-  async function info() {
-    const rest = await app.getServer<RestServer>(RestServer);
-    const port = await rest.get<Number>(RestBindings.PORT);
-    return {
-      appName: 'facade',
-      uptime: Date.now() - app._startTime.getTime(),
-      url: `http://127.0.0.1:${port}`,
-    };
-  }
+export async function main(options: ApplicationConfig = {}) {
+  const app = new FacadeMicroservice(options);
+  await app.boot();
+  await app.start();
+
+  const url = app.restServer.url;
+  console.log(`FacadeMicroservice is running at ${url}`);
+  return app;
 }
